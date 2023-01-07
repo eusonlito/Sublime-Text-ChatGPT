@@ -36,7 +36,7 @@ def on_done(input_string):
     except Exception as e:
         text = '# Error: %s #' % str(e)
 
-    sublime.active_window().active_view().run_command('insert_text', {'string': text})
+    sublime.active_window().active_view().run_command('insert_snippet', {'contents': text})
 
 def on_change(input_string):
     pass
@@ -47,8 +47,3 @@ def on_cancel():
 class ChatGptCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         chatgpt_request()
-
-class InsertTextCommand(sublime_plugin.TextCommand):
-    def run(self, edit, string):
-        self.view.settings().set('auto_indent', True)
-        self.view.insert(edit, self.view.sel()[0].begin(), string)
