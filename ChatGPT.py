@@ -31,7 +31,7 @@ def on_done(input_string):
     timeout = settings.get('timeout', 10)
 
     try:
-        text = request.urlopen(response, data, timeout=5).read().decode('utf-8')
+        text = request.urlopen(response, data=data, timeout=timeout).read().decode('utf-8')
         text = json.loads(text)['choices'][0]['text']
     except Exception as e:
         text = '# Error: %s #' % str(e)
@@ -47,3 +47,8 @@ def on_cancel():
 class ChatGptCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         chatgpt_request()
+
+class InsertTextCommand(sublime_plugin.TextCommand):
+    def run(self, edit, string):
+        self.view.settings().set('auto_indent', True)
+        self.view.insert(edit, self.view.sel()[0].begin(), string)
