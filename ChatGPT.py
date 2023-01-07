@@ -7,7 +7,7 @@ import urllib.request as request
 settings = sublime.load_settings('ChatGPT.sublime-settings')
 
 def chatgpt_request():
-    sublime.active_window().show_input_panel('ChatGPT request:', '', on_done, on_change, on_cancel)
+    sublime.active_window().show_input_panel('ChatGPT Request', '', on_done, on_change, on_cancel)
 
 def on_done(input_string):
     data = json.dumps({
