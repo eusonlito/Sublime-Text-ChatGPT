@@ -2,17 +2,20 @@
 
 ### Automated Installation
 
-Waiting for Package Control approval.
+Waiting for Package Control approval: https://github.com/wbond/package_control_channel/pull/8675
+
+1. `Preferences` > `Package Control` > `Install Package`
+2. Search `ChatGPT`
 
 ### Manual Installation
 
 1. Click the `Preferences` > `Browse Packages…` menu.
-2. Clone this repository inside `Packages/ChatGPT` folder.
+2. Clone this repository inside `Packages` folder with name `ChatGPT`.
 3. Restart Sublime Text.
 
 ### Configuration
 
-1. Open `Menu` > `Preferences` > `Package Settings` > `ChatGPT` > `Settings - Package`.
+1. Open `Menu` > `Preferences` > `Package Settings` > `ChatGPT` > `Settings - Default`.
 2. Open `Menu` > `Preferences` > `Package Settings` > `ChatGPT` > `Settings - User`.
 3. Configure custom settings in `Settings - User`.
 4. Same for `Key Bindings`.
