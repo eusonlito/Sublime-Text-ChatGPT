@@ -49,6 +49,9 @@ class ChatGptCommand(sublime_plugin.TextCommand):
 
         try:
             text = request.urlopen(response, data=data, timeout=timeout).read().decode('utf-8')
+
+            self.debug('request[response]', text)
+
             text = str(json.loads(text)['choices'][0]['text'])
 
             if len(text) == 0:
