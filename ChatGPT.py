@@ -29,7 +29,7 @@ class ChatGptCommand(sublime_plugin.TextCommand):
 
         self.window.show_input_panel(
             self.show_input_title(),
-            self.show_input_last(),
+            self.show_input_value(),
             self.show_input_done,
             None,
             None
@@ -38,9 +38,9 @@ class ChatGptCommand(sublime_plugin.TextCommand):
     def show_input_title(self):
         return 'ChatGPT Question (model: %s | timeout: %s)' % (self.settings['model'], self.settings['timeout'])
 
-    def show_input_last(self):
+    def show_input_value(self):
         if len(self.settings['api_key']) == 0:
-            return 'You must set the API Key (Preferences > Package Settings > ChatGPT > Settings - User)'
+            return 'You must set the API Key (Preferences > Package Settings > ChatGPT > Settings)'
 
         for region in self.view.sel():
             if not region.empty():
