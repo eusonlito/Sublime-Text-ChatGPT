@@ -1,6 +1,7 @@
 import json
 import sublime
 import sublime_plugin
+import threading
 
 import urllib.request as request
 
@@ -59,15 +60,28 @@ class ChatGptCommand(sublime_plugin.TextCommand):
 
         self.view.settings().set('show_input_last', input_string)
 
-        contents = self.request(input_string).replace('\\', '\\\\').replace('$', '\\$')
+        Request(self.view, self.settings, input_string).start()
 
-        self.debug('show_input_done[contents]', contents)
+    def debug(self, key, value):
+        if (self.settings['debug']):
+            print(key, value)
+
+class Request(threading.Thread):
+    def __init__(self, view, settings, prompt):
+        self.view = view
+        self.settings = settings
+        self.prompt = prompt
+
+        super(Request, self).__init__()
+
+    def run(self):
+        contents = self.request().replace('\\', '\\\\').replace('$', '\\$')
 
         self.view.run_command('insert_snippet', {'contents': contents})
 
-    def request(self, input_string):
+    def request(self):
         response = self.request_response()
-        data = self.request_data(input_string)
+        data = self.request_data()
         timeout = self.settings['timeout']
 
         self.debug('request[data]', data)
@@ -101,9 +115,9 @@ class ChatGptCommand(sublime_plugin.TextCommand):
             'Content-Type': 'application/json'
         }
 
-    def request_data(self, input_string):
+    def request_data(self):
         return json.dumps({
-            'prompt': input_string,
+            'prompt': self.prompt,
             'model': self.settings['model'],
             'temperature': self.settings['temperature'],
             'max_tokens': self.settings['max_tokens']
