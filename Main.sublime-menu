@@ -13,6 +13,10 @@
                         "caption": "ChatGPT",
                         "children": [
                             {
+                                "caption": "Open Command Palette",
+                                "command": "chat_gpt"
+                            },
+                            {
                                 "caption": "Settings",
                                 "command": "edit_settings",
                                 "args": {
@@ -25,7 +29,15 @@
                                 "command": "edit_settings",
                                 "args": {
                                     "base_file": "${packages}/ChatGPT/ChatGPT.sublime-keymap",
+                                    "user_file": "${packages}/User/Default ($platform).sublime-keymap",
                                     "default": "[\n\t{\n\t\t\"keys\": [\"alt+shift+c\"],\n\t\t\"command\": \"chat_gpt\"\n\t}\n]"
+                                }
+                            },
+                            {
+                                "caption": "README",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/ChatGPT/README.md",
                                 }
                             }
                         ]

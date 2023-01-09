@@ -1,1 +1,7 @@
-[]
+[
+    // Add this settings to User Key Bindings
+    {
+        "keys": ["alt+shift+c"],
+        "command": "chat_gpt"
+    }
+]

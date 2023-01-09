@@ -1,8 +1,29 @@
 {
+    // API Key is required to use OpenAI ChatGPT
+    // Create your api key at https://beta.openai.com/account/api-keys
+    // More info at https://openai.com/blog/openai-api/
     "api_key": "",
+
+    // The default model is the used by chatgpt web tool
+    // More info at https://beta.openai.com/docs/models
     "model": "text-davinci-003",
+
+    // Higher values means the model will take more risks.
+    // Try 0.9 for more creative applications, and 0 (argmax sampling) for ones with a well-defined answer.
+    // More info at https://algowriting.medium.com/gpt-3-temperature-setting-101-41200ff0d0be
+    // API Details at https://beta.openai.com/docs/api-reference/completions/create#completions/create-temperature
     "temperature": 0.5,
+
+    // The token count of your prompt plus max_tokens cannot exceed the model's context length.
+    // Most models have a context length of 2048 tokens (except for the newest models, which support 4096).
+    // API Details at https://beta.openai.com/docs/api-reference/completions/create#completions/create-max_tokens
     "max_tokens": 1024,
+
+    // Seconds to wait for OpenAI response.
+    // If the OpenAI API is busy it may return a timeout frequently.
     "timeout": 30,
+
+    // Print debug messages in console.
+    // You can open the console from the menu option `View` > `Show Console`
     "debug": false
 }
