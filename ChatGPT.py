@@ -42,6 +42,10 @@ class ChatGptCommand(sublime_plugin.TextCommand):
         if len(self.settings['api_key']) == 0:
             return 'You must set the API Key (Preferences > Package Settings > ChatGPT > Settings - User)'
 
+        for region in self.view.sel():
+            if not region.empty():
+                return self.view.substr(region)
+
         return self.view.settings().get('show_input_last', '')
 
     def show_input_done(self, input_string):
