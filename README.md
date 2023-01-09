@@ -4,6 +4,8 @@ This plugin connect the Sublime Text editor with the OpenAI ChatGPT using the co
 
 Instead to write the request inside the editor, it will be written in the command palette.
 
+The selected code will be automatically filled in the command palette so that you can complete the request.
+
 > Remember: You can add a line break inside the command palette using the Shift + Enter key combination.
 
 > Important: Using this plugin implies that you may be sending parts of your code to the company that manages the ChatGPT API (in this case OpenAI). It is important to keep this in mind if your code is secret or private.
